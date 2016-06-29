@@ -1,0 +1,210 @@
+6/12/16 
+* skeleton
+* cast entity basic ability working
+
+6/13/16
+* spawn enemy entities after current one dies 
+ - player and enemies target each other automatically
+* show XP bar
+* gain XP on enemy kill
+* listen to player death and handle ghosting 
+  - remove current enemies when player dies
+  - show respawn progress bar
+* hud/ui
+  - class/level/name/stats
+  - equipment hud
+* ability view -- cooldown should go opposite direction as cast
+
+
+6/14/16
+* map + locations
+ - map draggable
+ - fixed: mapview clicks hit buttons behind map image 
+* main menu button text size incorrect
+  - have to use "20px Arial" not "Arial 20px"
+* character creation/selection screen
+* save/load character progress
+* locations view
+* map view
+ - show player location
+ - open map pointed at current location
+ - click location to go there
+
+6/15/16
+* map view
+ - travel animation
+* create character screen 
+ - use NodeView.setTextInput for name input
+* character select screen 
+ - delete buttons
+* battle state 
+ - rest to regain health/mana
+ - add animation time to return to city
+* location backgrounds
+* make data driven
+ - enemy spawn data
+
+6/16/16
+* inventory 
+ - skeletion, save/load, gold
+* items 
+ - enter inventory, show on inv hud
+ - bank <-> inv move
+* equip 
+ - main weap
+ - armor
+ - misc/offhand
+ - 2h takes up main + offhand slots
+
+6/17/16
+* items
+ - inv <-> equip
+ - drop from enemies (data driven)
+ - stackables stack
+* store
+ - show inventory from data
+ - show buy confirmation
+ - buying works
+ - cancel confirm works
+ - show sell confirmation from inv
+ - show sell confirmation from equip
+ - selling works (and stacks sell @xQty price)
+
+6/18/16
+* battle 
+ - toggle fighting on/off
+ - auto rest based on playerModel rest value
+ - fight settings: when to rest
+ - equip/unequip between fights
+* playerModel
+ - save/load rest health pct settings
+ - swap item with currently equipped
+* utility 
+ - slider ui
+
+6/19/16
+* equipped items 
+ - affect stats
+* skills
+ - stats affect skills
+* UI
+ - close button on popup windows
+* battle state 
+  - floating damage text
+ - FIXED: block actions while resting/ghosting/returning
+ - FIXED: cast actions cancelled on entity death, player rest, and return
+* slider 
+ - FIXED: values are inverted (up should be 1.0, down should be 0.0)
+* store
+ - FIXED: buying stackables is behaving incorrectly
+
+6/20/16
+* skill tree view
+ - skeleton
+* skill tree data
+ - prototyping
+
+6/21/16
+* skill tree view
+ - show chosen abilities
+ - tabs select current tree view
+ - tree view (basic)
+ - click ability in tree view to equip it (if not already equipped)
+ - click ability in chosen abilities to unequip it
+ - save/load to disk
+* classes
+ - skill tree model/view selection mechanic
+* skill 
+ - healing
+
+6/22/16
+* FIXED: AIcontroller running while mode == stopped
+* adjust ability view position (left justified) in battleview
+
+6/23/16
+ - Rift arrived, no work was done this day -
+
+6/24/16
+* FIXED: 'rest' auto-starting while in combat
+* FIXED: dot/hots not ticking
+* FIXED: dead entities still 'isValid == true' in castEffect
+* FIXED: enter grind, leave, come back -- no one is attacking
+* make a bunch more skills and try them out
+ - dot
+ - channeled damage
+ - hot
+ - damage + life drain
+
+6/25/16
+* make a bunch more skills and try them out
+ - passive damage redux
+ - passive health gain
+ - passive damage aura
+* character representation
+ - animated avatar
+
+6/26/16
+* character creation
+ - race / class selection
+* race/class skill trees
+* races
+ - first 'class tree' is based on race type
+* FIXED: selecting abilities from battle state doesnt apply changes to entityModel
+
+6/27/16
+* talents 
+ - multiple stacks/level
+ - lock, unlock
+ - reset points
+ - prereqs (xp_level, ability)
+ - show ability prereq lines
+
+6/28/16
+* ability icons
+ - some temp art
+ - skill configure view
+ - battle view
+* skill tree view
+ - skill description code
+ - show skill info window in battle view
+* temp art
+ - avatar for each race
+
+WIP
+
+* art
+
+TODO LIST
+ 
+* class skills filled out
+* crafting
+* location/level/enemies scaling
+* art
+* quests, dungeons, raiding
+ 
+* make more skills
+   - block next
+   - health shield
+   - passive: gold drop increase
+   - passive: crit rate
+
+* items 
+ - can be crafted
+ - temp icons
+
+* classes
+ - fill out talent trees
+
+* battle
+ - fight settings: loot quality
+ - fight settings: cooldown wait time
+ - multiple adds
+* level up stats / skills
+* enemy scaling
+* player scaling
+* crafting
+* quests
+* dungeons
+* raiding
+
+Bugs:

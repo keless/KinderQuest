@@ -1,0 +1,8 @@
+{
+  "events":["end", "attack"],
+  "graph":{
+			"idle":{ "fps":2, "transitions":{"end":"idle", "attack":"attack"} },
+      "attack":{ "fps":10, "transitions":{"end":"idle"} }
+		},
+  "defaultState":"idle" 
+}
