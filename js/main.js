@@ -25,7 +25,7 @@ var game_create = function()
 			"gfx/btn_white.sprite",
 			"gfx/btn_white_sm.sprite",
 			"gfx/workbench3.png",
-			"gfx/map.PNG",
+			"gfx/map.png",
 			"gfx/bg_DragonSaddle.jpg",
 			"gfx/bg_Exiled.jpg",
 			"gfx/bg_GnollMesa.jpg",
