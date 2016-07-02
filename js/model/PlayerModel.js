@@ -125,7 +125,7 @@ class PlayerModel {
 
   shouldRest() {
     var ent = this.entity;
-    return ((ent.hp_curr / ent.hp_base) < this.stratRestHealth);
+    return ((ent.hp_curr / ent.hp_base) < this.stratRestHealth) && !this.isGhost();
   }
 
   isGhost() {
