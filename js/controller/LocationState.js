@@ -46,6 +46,7 @@ class LocationStateView extends BaseStateView {
 		this.SetListener("btnBank", this.onBtnBank);
     //rune crafting
 		this._addButton("btnCraft", "Craft", navStartX, 350);
+		this.SetListener("btnCraft", this.onBtnCraft);
     //look for trouble
 		this._addButton("btnGrind", "Grind", navStartX, 450);
 		this.SetListener("btnGrind", function(e){ 
@@ -77,6 +78,7 @@ class LocationStateView extends BaseStateView {
 
 		this.SetListener("btnCloseStore", this.onBtnCloseStore);
 		this.SetListener("btnCloseBank", this.onBtnCloseBank);
+		this.SetListener("btnCloseCraft", this.onBtnCloseCraft);
   }
 
 	onBtnBankSlot(e) {
@@ -144,6 +146,7 @@ class LocationStateView extends BaseStateView {
 	onBtnStore(e) {
 		if(this.storeView == null) {
 			this._closeBankView();
+			this._closeCraftView();
 			this._openStoreView();
 		}else {
 			this._closeStoreView();
@@ -153,9 +156,20 @@ class LocationStateView extends BaseStateView {
 	onBtnBank(e) {
 		if(this.bankView == null) {
 			this._closeStoreView();
+			this._closeCraftView();
 			this._openBankView();
 		} else {
 			this._closeBankView();
+		}
+	}
+
+	onBtnCraft(e) {
+		if(this.craftView == null) {
+			this._closeStoreView();
+			this._closeBankView();
+			this._openCraftView();
+		} else {
+			this._closeCraftView();
 		}
 	}
 
@@ -175,7 +189,7 @@ class LocationStateView extends BaseStateView {
 	_openStoreView() {
 		if(this.storeView == null) {
 			this.storeView = new StoreView();
-			this.storeView.pos.setVal(500, 325);
+			this.storeView.pos.setVal(400, 325);
 			this.rootView.addChild(this.storeView);
 		}
 	}
@@ -183,6 +197,19 @@ class LocationStateView extends BaseStateView {
 		if(this.storeView != null) {
 			this.rootView.removeChild(this.storeView, true);
 			this.storeView = null;
+		}
+	}
+	_openCraftView() {
+		if(this.craftView == null) {
+			this.craftView = new CraftView();
+			this.craftView.pos.setVal(400, 325);
+			this.rootView.addChild(this.craftView);
+		}
+	}
+	_closeCraftView() {
+		if(this.craftView != null) {
+			this.rootView.removeChild(this.craftView, true);
+			this.craftView = null;
 		}
 	}
 
@@ -208,6 +235,9 @@ class LocationStateView extends BaseStateView {
 	}
 	onBtnCloseBank(e) {
 		this._closeBankView();
+	}
+	onBtnCloseCraft(e) {
+		this._closeCraftView();
 	}
 
 	onBtnOpenSkills(e) {

@@ -8,6 +8,7 @@ class InventoryModel {
     this.capacity = 4;
     this.gold = 0;
 	}
+
   initWithJson(json) {
     this.gold = json["gold"] || 0;
     console.log("init inv gold is " + this.gold);
@@ -19,8 +20,8 @@ class InventoryModel {
       this.items.push(item);
     }
   }
-  toJson() {
 
+  toJson() {
     var itms = [];
     for(var i=0; i < this.items.length; i++) {
       itms.push( this.items[i].toJson());
@@ -37,6 +38,7 @@ class InventoryModel {
   incGold( coins ) {
     this.gold += coins;
   }
+
   getGold() {
     return this.gold;
   }
@@ -55,6 +57,7 @@ class InventoryModel {
   hasCapacity( numItems ) {
     return this.capacity >= (this.items.length + numItems);
   }
+
   hasCapacityForItem( itemModel, partialStackOkay ) {
     partialStackOkay = partialStackOkay || false;
     if(this.hasCapacity(1)) {
@@ -137,6 +140,43 @@ class InventoryModel {
     if(idx >= this.items.length) return null;
     return this.items[idx];
   }
+
+  getQtyForItemType( itemId ) {
+    var qty = 0;
+    for(var i=0;i < this.items.length; i++) {
+      if(this.items[i].itemId == itemId) {
+        qty += Math.max(this.items[i].currStacks, 1);
+      }
+    }
+    return qty;
+  }
+
+  //caller is responsible for enquring there is enough qty
+  //  use getQtyForItemType before calling this
+  consumeQtyForItemType( itemId, qty ) {
+    var itemsToRemove = [];
+
+    for(var i=(this.items.length-1); (i >= 0) && (qty > 0); i--) {
+      if(this.items[i].itemId == itemId) {
+        var stack = Math.max(this.items[i].currStacks, 1);
+        var delta = Math.min(stack, qty);
+
+        
+        stack -= delta;
+        qty -= delta;
+
+        this.items[i].currStacks = stack;
+
+        if(stack <= 0) {
+          this.items.splice(i, 1); //remove item
+        }
+      }
+
+      if(qty != 0) {
+        console.warn("consumeQtyForItemType still needs " + qty + " of " + itemId);
+      }
+    }
+  }
 }
 
 class ItemModel {
@@ -158,7 +198,6 @@ class ItemModel {
     this.type = ItemType.TRASH;
     this.maxStacks = 1;
     this.currStacks = 0;
-
   }
 
   initWithJson(json) {
