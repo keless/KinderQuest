@@ -9,7 +9,7 @@ class MapView extends NodeView {
 		var screenSize = Graphics.ScreenSize;
 
 		this.imgMap = new NodeView();
-		this.imgMap.setImage("gfx/map.PNG");
+		this.imgMap.setImage("gfx/map.png");
 
 		var dx = Math.max(this.imgMap.size.x - screenSize.x, 0);
 		var dy = Math.max(this.imgMap.size.y - screenSize.y, 0);
