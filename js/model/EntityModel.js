@@ -33,7 +33,7 @@ class EntityModel extends ICastEntity {
 		this.hp_curr = this.hp_base;
 
 		this.xp_level = 1;
-		this.xp_next = 100;
+		this.xp_next = 10;
 		this.xp_curr = 0;
 
 		this.int_base = this.int_curr = 10;
@@ -225,9 +225,17 @@ class EntityModel extends ICastEntity {
 				this.xp_curr -= this.xp_next;
 				this.xp_level++;
 
-				//todo: data-driven XP curve
-				this.xp_next *= 2;
-				//todo: handle entity level up
+				//xp curve
+				this.xp_next = Math.floor(Math.pow(1.5, this.xp_level + 5));
+
+				var projectedPlayerHP = 30;
+				for(var i=1; i < this.xp_level; i++ ) {
+					projectedPlayerHP = ~~(projectedPlayerHP * 1.25);
+				}
+
+				var newHP = projectedPlayerHP;
+				this.setFullHP(newHP);
+
 				this.dispatch({evtName:"levelUp"});
 			}
 	}
@@ -236,6 +244,11 @@ class EntityModel extends ICastEntity {
 
 	getTarget() {
 		return this.m_abilityTargets;
+	}
+
+	setFullHP( value ) {
+		this.hp_base = value;
+		this.hp_curr = value;
 	}
 
 	// in: string propName, float value, CastEffect effect

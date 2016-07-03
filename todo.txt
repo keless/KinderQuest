@@ -170,14 +170,30 @@
 * temp art
  - avatar for each race
 
+7/2/16
+* low level balancing
+ - enemy damage scaling (linear!)
+ - enemy XP scaling (linear!)
+ - enemy HP scaling (linear!)
+ - player health scaling
+* art 
+ - crafting icons
+* crafting
+ - crafting view
+ - consume craft items to create armor item
+
 WIP
 
+* scaling brackets for enemies
+* enemies drop items with level based on their brackets
+
 * art
+ - weapons and armor icons
 
 TODO LIST
  
 * class skills filled out
-* crafting
+
 * location/level/enemies scaling
 * art
 * quests, dungeons, raiding
@@ -189,8 +205,7 @@ TODO LIST
    - passive: crit rate
 
 * items 
- - can be crafted
- - temp icons
+ - weapon and armor temp icons
 
 * classes
  - fill out talent trees
@@ -199,12 +214,9 @@ TODO LIST
  - fight settings: loot quality
  - fight settings: cooldown wait time
  - multiple adds
-* level up stats / skills
-* enemy scaling
-* player scaling
-* crafting
 * quests
 * dungeons
 * raiding
+* balancing
 
 Bugs:

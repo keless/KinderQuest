@@ -13,7 +13,7 @@ class StoreView extends NodeView {
     this.sellIsInvItem = false;
     this.itemSlotIdx = 0;
 
-    this.setRect(400,400, "rgba(0,0,0,0.5)");
+    this.setRect(300,400, "rgba(0,0,0,0.5)");
             
     var lblText = new NodeView();
     lblText.setLabel("Store pg1", "14px Arial", "#FFFFFF");
@@ -21,7 +21,7 @@ class StoreView extends NodeView {
     this.addChild(lblText);
 
     var btnClose = new ButtonView("btnCloseStore", "gfx/btn_white_sm.sprite", "X", "18px Arial", "#FF0000");
-    btnClose.pos.setVal(185,-185);
+    btnClose.pos.setVal(135,-185);
     this.addChild(btnClose);
 
     this.slots = [];

@@ -122,9 +122,14 @@ class ItemView extends NodeView {
     this.itemModel = itemModel;
     this.stackView = null;
 
-    var gfx = g_items[itemModel.itemId].img;
-    if(gfx) {
-      this.setImage(gfx);
+    var itemJson = g_items[itemModel.itemId];
+    if("sprite" in itemJson) {
+      var spr = itemJson.sprite;
+      var frm = itemJson.sprIdx;
+      this.setSprite(spr, frm);
+    }else if( "img" in itemJson) {
+      var img = g_items[itemModel.itemId].img;
+      this.setImage(img);
     }else {
       var hackColor = itemModel.getHackColor();
       this.setRect(40,40, hackColor);

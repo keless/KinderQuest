@@ -24,6 +24,8 @@ class PlayerModel {
     this.bankPages = 1;
     this.bankItems = [];
 
+    this.craftingLevel = 0;
+
     this.skills = new SkillsModel(this);
 
     this.equipment = [null, null, null];
@@ -35,6 +37,8 @@ class PlayerModel {
     this.entity.initWithJson( json["entity"] || {} );
     this.locationIdx = json["locIdx"] || 0;
     this.stratRestHealth = json["stratRestHealth"] || 0.3;
+
+    this.craftingLevel = json["craftingLevel"] || 0;
     
     this.skills.initWithJson( json["skills"] || {} );
 
@@ -64,21 +68,6 @@ class PlayerModel {
     this.skills.applyToEntity(this.entity);
   }
 
-  //ISkillsModelDelegate
-  getSkillTrees() {
-    return [ this.entity.race, this.entity.class ]
-  }
-
-  //ISkillsModelDelegate
-  getPoints() {
-    return this.entity.xp_level;
-  }
-
-  //ISkillsModelDelegate
-  getXpLevel() {
-    return this.entity.xp_level;
-  }
-
   toJson() {
     var bank = [];
     for(var i=0; i < this.bankItems.length ; i++) {
@@ -97,6 +86,7 @@ class PlayerModel {
       entity:this.entity.toJson(), 
       locIdx:this.locationIdx,
       stratRestHealth:this.stratRestHealth,
+      craftingLevel:this.craftingLevel,
       skills:this.skills.toJson(),
       equipment:equip,
       bankPages:this.bankPages,
@@ -110,8 +100,27 @@ class PlayerModel {
     sd.save(this.saveId, this.toJson());
   }
 
+  //ISkillsModelDelegate
+  getSkillTrees() {
+    return [ this.entity.race, this.entity.class ]
+  }
+
+  //ISkillsModelDelegate
+  getPoints() {
+    return this.entity.xp_level;
+  }
+
+  //ISkillsModelDelegate
+  getXpLevel() {
+    return this.entity.xp_level;
+  }
+
   getSkillsModel() {
     return this.skills;
+  }
+
+  incCraftingLevel() {
+    this.craftingLevel++;
   }
 
   setRestPct(pct) {
@@ -125,7 +134,7 @@ class PlayerModel {
 
   shouldRest() {
     var ent = this.entity;
-    return ((ent.hp_curr / ent.hp_base) < this.stratRestHealth);
+    return ((ent.hp_curr / ent.hp_base) < this.stratRestHealth) && !this.isGhost();
   }
 
   isGhost() {

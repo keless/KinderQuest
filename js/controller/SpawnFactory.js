@@ -21,6 +21,8 @@ class SpawnFactory {
   // given the location and player, spawn and return an appropriate enemy
   static SpawnEnemyForLocation(locIdx, playerModel) {
 
+    var playerLevel = playerModel.getEntity().getProperty("xp_level");
+
     var loc = g_locations[locIdx];
     var spawnTable = g_spawnTable[loc.name] || g_spawnTable["default"];
 
@@ -34,12 +36,40 @@ class SpawnFactory {
 
     var enemy = new EntityModel();
 		enemy.initWithJson(enemyTemplate);
-        var abilityId = "attack1";
-        var json = g_abilityCatalog[abilityId];
-        json.abilityId = abilityId;
-				var castCommandModel = new CastCommandModel( json.ranks[0] );
-				var castCommandState = new CastCommandState(castCommandModel, enemy);
-				enemy.addAbility(castCommandState);
+
+    //scaling base curve
+    var projectedPlayerHP = 30;
+    for(var i=1; i < playerLevel; i++ ) {
+      projectedPlayerHP = ~~(projectedPlayerHP * 1.25);
+    }
+
+    //enemy HP scaling (linear!)
+    enemy.setFullHP(~~(projectedPlayerHP * 0.4) );
+
+    //enemy xp scaling (linear!)
+    enemy.setProperty("xp_next",  ~~(projectedPlayerHP * 0.07) );
+
+    //enemy damage scaling (linear!)
+    var damage = ~~(projectedPlayerHP * 0.07); 
+    var abilityJson = 				
+      {"name": enemyTemplate.name,
+        "abilityId":"(enemy)",
+				"castTime": 2,
+				"cooldownTime": 1,
+				"range": 500,
+				"effectsOnCast": [
+						{
+								"effectType": "damage",
+								"damageType": "piercing",
+								"targetStat": "hp_curr",
+								"valueBase": damage,
+								"react": "shake"
+						}
+				]};  
+
+    var castCommandModel = new CastCommandModel( abilityJson );
+    var castCommandState = new CastCommandState(castCommandModel, enemy);
+    enemy.addAbility(castCommandState);
 
     enemy.lootTable = g_lootTables[type];
 
