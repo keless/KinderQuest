@@ -24,27 +24,27 @@ class BattleStateView extends BaseStateView {
 
 		var navX = screenSize.x - 25;
 
-		this.btnBack = CreateSimpleImageButton(null, "gfx/grindquest/icon_return.png",  "btnBack", EventBus.ui);
+		this.btnBack = new ButtonView("btnBack", "gfx/items/icon_return.sprite");
 		this.btnBack.pos.setVal(navX, 25);
 		this.rootView.addChild(this.btnBack);
 		this.SetListener("btnBack", this.onBtnBack);
 
-		this.btnMap = CreateSimpleImageButton(null, "gfx/grindquest/icon_map.png",  "btnMap", EventBus.ui);
+		this.btnMap = new ButtonView("btnMap", "gfx/items/icon_map.sprite");
 		this.btnMap.pos.setVal(navX, 75);
 		this.rootView.addChild(this.btnMap);
 		this.SetListener("btnMap", this.onBtnMap);
 
-		this.btnRest = CreateSimpleImageButton(null, "gfx/grindquest/icon_rest.png",  "btnRest", EventBus.ui);
+		this.btnRest = CreateSimpleImageButton(null, "gfx/grindquest/icon_rest.png",   EventBus.ui);
 		this.btnRest.pos.setVal(navX - 50, 25);
 		this.rootView.addChild(this.btnRest);
 		this.SetListener("btnRest", this.onBtnRest);
 
-		this.btnStrat = CreateSimpleImageButton(null, "gfx/grindquest/icon_gear.png",  "btnStrat", EventBus.ui);
+		this.btnStrat = new ButtonView("btnStrat", "gfx/items/icon_gear.sprite");
 		this.btnStrat.pos.setVal(navX - 50, 75);
 		this.rootView.addChild(this.btnStrat);
 		this.SetListener("btnStrat", this.onBtnStrat);
     
-		this.btnSkills = CreateSimpleImageButton(null, "gfx/grindquest/icon_book.png",  "btnSkills", EventBus.ui);
+		this.btnSkills = new ButtonView("btnSkills", "gfx/items/icon_book.sprite");
 		this.btnSkills.pos.setVal(navX - 100, 75);
 		this.rootView.addChild(this.btnSkills);
 		this.SetListener("btnSkills", this.onBtnSkills);
@@ -417,12 +417,12 @@ class ModeHudView extends NodeView {
     lblText.pos.setVal(0, -35);
     this.addChild(lblText);
 
-		this.btnGrind = CreateSimpleImageButton(null,"gfx/grindquest/icon_grind.png","btnGrind", EventBus.ui);
+		this.btnGrind = new ButtonView("btnGrind", "gfx/items/icon_grind.sprite");
 		this.btnGrind.pos.setVal(-50, 0);
 		this.addChild(this.btnGrind);
 		this.SetListener("btnGrind", this.onBtnGrind);
 
-		this.btnStop = CreateSimpleImageButton(null,"gfx/grindquest/icon_stop.png","btnStop", EventBus.ui);
+		this.btnStop = new ButtonView("btnStop","gfx/items/icon_stop.sprite");
 		this.btnStop.pos.setVal(50, 0);
 		this.addChild(this.btnStop);
 		this.SetListener("btnStop", this.onBtnStop);
