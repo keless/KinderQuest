@@ -200,10 +200,13 @@
 WIP
 
 * art
- - weapons and armor icons
- - skill icons
+ - replace temp icons
 
 TODO LIST
+
+* art
+ - weapons and armor icons
+ - skill icons
 
 * classes
  - fill out talent trees
