@@ -183,9 +183,8 @@ class CastCommandState {
 		return this.m_pModel.isPassive();
 	}
 
-	//float
-	getPassiveDmgRedux() {
-		return this.m_pModel.getPassiveDmgRedux();
+	getPassiveOfType( type ) {
+		return this.m_pModel.getPassiveOfType(type);
 	}
 
 	doSelfPassiveHealAndDamage() {
@@ -455,10 +454,10 @@ class CastCommandModel {
 	}
 	
 	//float
-	getPassiveDmgRedux() {
+	getPassiveOfType( type ) {
 		if(!this._isPassive) return 0.0;
 		for(var a of this.descriptor["passiveEffects"]) {
-			if(a.effectType == "dmgRedux") {
+			if(a.effectType == type) {
 				return a.valueMultiplier;
 			}
 		}

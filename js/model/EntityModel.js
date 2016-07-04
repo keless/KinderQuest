@@ -138,11 +138,27 @@ class EntityModel extends ICastEntity {
 	}
 
 	getPassiveDmgRedux() {
-		var redux = 0.0;
+		var result = 0.0;
 		for(var i=0; i<this.m_passiveAbilities.length; i++) {
-			redux += this.m_passiveAbilities[i].getPassiveDmgRedux();
+			result += this.m_passiveAbilities[i].getPassiveOfType("dmgRedux");
 		}
-		return redux;
+		return result;
+	}
+
+	getPassiveBarterModifier() {
+		var result = 0.0;
+		for(var i=0; i<this.m_passiveAbilities.length; i++) {
+			result += this.m_passiveAbilities[i].getPassiveOfType("barter");
+		}
+		return result;
+	}
+
+	getPassiveGoldFindModifier() {
+		var result = 0.0;
+		for(var i=0; i<this.m_passiveAbilities.length; i++) {
+			result += this.m_passiveAbilities[i].getPassiveOfType("goldFind");
+		}
+		return result;
 	}
 
 	clearAbilities() {

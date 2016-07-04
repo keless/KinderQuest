@@ -8,9 +8,7 @@ class ISkillsModelDelegate {
   // number of points player can invest in skills
   getPoints() { return 1; }
 
-  getXpLevel() { 
-    return 1;
-  }
+  getXpLevel() { return 1; }
 }
 
 /**

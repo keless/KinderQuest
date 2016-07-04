@@ -109,7 +109,7 @@ class BattleStateView extends BaseStateView {
 	
 	createPlayerEntityView(entityModel) 
 	{
-		var entView = new EntityView(entityModel);
+		var entView = new EntityView(entityModel, true);
 		entView.pos.setVal(150, 150);
 		this.rootView.addChild(entView);
 		this.playerView = entView;
@@ -309,7 +309,7 @@ class BattleStateView extends BaseStateView {
 	}
 
 	createEntityView( entityModel, idx ) {
-		var entView = new EntityView(entityModel);
+		var entView = new EntityView(entityModel, false);
     entView.pos.setVal(400, 180 + (idx*50))
 		this.enemyLayer.addChild(entView);
 		this.enemyViews.push(entView);

@@ -241,7 +241,10 @@ class BattleStateModel extends BaseStateModel {
 		var entity = e.entity;
 		var xpGained = entity.xp_next;
 		this.playerModel.gainXP(xpGained);
-		this.playerModel.incGold(entity.getGold());
+
+		var goldFound = entity.getGold();
+		goldFound = ~~(goldFound * (1 + playerModel.getPassiveGoldFindModifier()));
+		this.playerModel.incGold(goldFound);
 
 		var loot = SpawnFactory.DropLootForEnemy(entity);
 		this.playerModel.addItem(loot);

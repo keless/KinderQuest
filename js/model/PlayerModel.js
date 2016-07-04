@@ -152,6 +152,10 @@ class PlayerModel {
     return this.entity;
   }
 
+  getBarterModifier() {
+    return this.entity.getPassiveBarterModifier();
+  }
+
   respawn() {
     console.log("player respawn!");
     this.entity.isDead = false;
@@ -234,6 +238,9 @@ class PlayerModel {
     if(itemModel.isStackable()) {
       itemModel.currStacks = 1;
     }
+
+    price = ~~(price * (1.0 - this.getBarterModifier()));
+    price = Math.max(price, 1);
 
     this.addItem(itemModel);
     this.incGold(-1 * price);

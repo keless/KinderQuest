@@ -24,7 +24,7 @@ var g_classes = ["merchant", "warrior", "mage", "paladin", "priest", "rogue", "h
 var g_classTrees = {
 	"human":{"name":"Human",
 						"abilities":["attack1", "attack2", "p_dmgRdx1"], 
-						"pos":[[0,0],[1,0],[0,1]]},
+						"pos":[[0,0],[1,0],[0,2]]},
 	"gnome":{"name":"Gnome",
 						"abilities":["attack1", "attack2", "lifesteal1"], 
 						"pos":[[0,0],[1,0],[0,1]]},
@@ -33,34 +33,34 @@ var g_classTrees = {
 						"pos":[[0,0],[0,1]]},
 	"dwarf":{"name":"Dwarf",
 						"abilities":["attack1", "p_dmgRdx1"],
-						"pos":[[0,0],[0,1]]},
+						"pos":[[0,0],[0,2]]},
 	"orc":{"name":"Orc",
 						"abilities":["attack1", "p_dmgRdx1"],
-						"pos":[[0,0],[0,1]]},
+						"pos":[[0,0],[0,2]]},
 	"goblin":{"name":"Goblin",
-						"abilities":["attack1", "p_dmgRdx1"],
-						"pos":[[0,0],[0,1]]},
+						"abilities":["attack1", "p_goldFind1"],
+						"pos":[[0,0],[0,2]]},
 	"centaur":{"name":"Centaur",
 						"abilities":["attack1", "p_dmgRdx1"],
-						"pos":[[0,0],[0,1]]},
+						"pos":[[0,0],[0,2]]},
 	"base":{"name":"Base",
-						"abilities":["attack1", "p_dmgRdx1"],
-						"pos":[[0,0],[0,1]]},
+						"abilities":["attack1"],
+						"pos":[[0,0]]},
 	"merchant":{"name":"Merchant",
-						"abilities":["wand1", "fireball1"],
-						"pos":[[0,0], [1,0]]},
+						"abilities":["wand1", "p_barter1"],
+						"pos":[[0,0], [1,2]]},
 	"warrior":{"name":"Warrior",
 						"abilities":["attack1", "fireball1"],
 						"pos":[[0,0], [1,0]]},
 	"mage":{"name":"Mage",
 						"abilities":["wand1", "fireball1", "conflagrate1", "searbeam1", "p_dmgAura1"], 
-						"pos":[[0,0], [1,0], [1,1], [1,2], [2,0]]},
+						"pos":[[0,0], [1,0], [1,1], [1,2], [2,2]]},
 	"paladin":{"name":"Paladin",
 						"abilities":["heal1", "hot1", "p_heal1"],
-						"pos":[[0,0], [0,1], [1,0]]},
+						"pos":[[0,0], [0,1], [1,2]]},
 	"priest":{"name":"Priest",
 						"abilities":["heal1", "hot1", "lifesteal1", "p_heal1"], 
-						"pos":[[0,0], [0,1], [1,0], [2,0]]},
+						"pos":[[0,0], [0,1], [1,0], [2,2]]},
 	"rogue":{"name":"Rogue",
 						"abilities":["attack1", "fireball1"],
 						"pos":[[0,0], [1,0]]},
@@ -371,6 +371,100 @@ var g_abilityCatalog =  {
 								"valueStat": "int_curr",
 								"valueMultiplier": 0.2,
 								"react": "burn"
+						}
+				]}
+			]
+		},
+		"p_barter1": {
+			"reqs": {
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Barter",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "barter",
+								"valueMultiplier": 0.1,
+						}
+				]},
+				{"name":"Barter",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "barter",
+								"valueMultiplier": 0.2,
+						}
+				]},
+				{"name":"Barter",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "barter",
+								"valueMultiplier": 0.3,
+						}
+				]},
+				{"name":"Barter",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "barter",
+								"valueMultiplier": 0.4,
+						}
+				]},
+				{"name":"Barter",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "barter",
+								"valueMultiplier": 0.5,
+						}
+				]}
+			]
+		},
+		"p_goldFind1": {
+			"reqs": {
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.1,
+						}
+				]},
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.2,
+						}
+				]},
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.3,
+						}
+				]},
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.4,
+						}
+				]},
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.5,
 						}
 				]}
 			]
