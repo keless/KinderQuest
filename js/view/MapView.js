@@ -9,7 +9,7 @@ class MapView extends NodeView {
 		var screenSize = Graphics.ScreenSize;
 
 		this.imgMap = new NodeView();
-		this.imgMap.setImage("gfx/map.png");
+		this.imgMap.setImage("gfx/map.png"); //2000x1578
 
 		var dx = Math.max(this.imgMap.size.x - screenSize.x, 0);
 		var dy = Math.max(this.imgMap.size.y - screenSize.y, 0);
@@ -50,6 +50,19 @@ class MapView extends NodeView {
 			node.pos.setVal( loc.pos.x, loc.pos.y + 50 );
 			this.imgMap.addChild(node);
 			this.locBtns.push(node);
+
+			var tier = loc.tier;
+			var tierText = "60 Elite";
+			if(tier < 7) {
+				var max = tier * 10;
+				tierText = (max - 9).toString() + " - " + max.toString();
+			}
+
+
+			var lblTier = new NodeView();
+			lblTier.setLabelWithOutline(tierText, "12px Arial");
+			lblTier.pos.setVal(0, 30);
+			node.addChild(lblTier);
 		}
 
 		this.SetListener("mapTouch", this.onMapTouch);

@@ -110,11 +110,14 @@ class StoreView extends NodeView {
       price *= itemModel.currStacks;
     }
 
+    price = ~~(price * (1.0 + playerModel.getBarterModifier()));
+
     playerModel.incGold(price);
     playerModel.save();
 
     this._closeConfirmView();
   }
+
   onBuyConfirm(e) {
     if(!this.confirmView) return;
 
@@ -130,6 +133,7 @@ class StoreView extends NodeView {
 
     this._closeConfirmView();
   }
+
   onCancelConfirm(e) {
     if(!this.confirmView) return;
     this._closeConfirmView();
@@ -141,6 +145,7 @@ class StoreView extends NodeView {
       this.addChild(this.confirmView);
     }
   }
+  
   _closeConfirmView() {
     if(this.confirmView != null) {
       this.removeChild(this.confirmView, true);

@@ -2,7 +2,7 @@
 
 class EntityView extends NodeView
 {
-	constructor( entityModel ) {
+	constructor( entityModel, isPlayer ) {
 		super();
 		
 		var w = 300;
@@ -10,9 +10,15 @@ class EntityView extends NodeView
 		this.setRect(w, h, "#000000");
 		
 		this.pEntityModel = entityModel;
-		
+
+		var name = entityModel.name;
+		if(!isPlayer) {
+			var lvl = this.pEntityModel.getProperty("xp_level");
+			name += " lvl " + lvl;
+		}
+
 		var title = new NodeView();
-		title.setLabel( entityModel.name, "20px Arial", "#FFFFFF" );
+		title.setLabel( name, "20px Arial", "#FFFFFF" );
 		title.pos.setVal(0, -h/4);
 		this.addChild(title);
 		

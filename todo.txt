@@ -182,41 +182,53 @@
  - crafting view
  - consume craft items to create armor item
 
-WIP
+7/3/16
+* passives
+ - merchant barter
+ - gold drop increase (goblin)
+* scaling brackets for enemies and locations
+* loot
+ - enemies drop materials from same tier as themselves
+ - enemies drop items from same tier as themselves
+* spawns 
+ - make enemy spawn levels closer to player level, not rand(min, max)
 
-* scaling brackets for enemies
-* enemies drop items with level based on their brackets
+7/4/16
+* map
+ - show location tiers
+
+WIP
 
 * art
  - weapons and armor icons
+ - skill icons
 
 TODO LIST
- 
-* class skills filled out
 
-* location/level/enemies scaling
+* classes
+ - fill out talent trees
+
 * art
 * quests, dungeons, raiding
  
 * make more skills
    - block next
    - health shield
-   - passive: gold drop increase
    - passive: crit rate
 
 * items 
  - weapon and armor temp icons
 
-* classes
- - fill out talent trees
-
 * battle
  - fight settings: loot quality
  - fight settings: cooldown wait time
- - multiple adds
+ - multiple adds  
 * quests
 * dungeons
 * raiding
 * balancing
 
 Bugs:
+
+* 'resting' shows up too soon upon finishing a fight
+  - user doesnt get to see the enemy reach zero before it shows up
