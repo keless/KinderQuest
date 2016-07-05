@@ -9,10 +9,10 @@ class ItemType {
 }
 
 var g_items = {
-  "wp_sword_1":{ type:ItemType.MAINHAND, hackColor:"#FF0000", stats:{"str_curr":10}, gold:5, img:"gfx/grindquest/sword_1h.png" },
-  "wp_dagger_1":{ type:ItemType.MAINHAND, hackColor:"#FF0000", stats:{"agi_curr":10}, gold:5, img:"gfx/grindquest/sword_1h.png" },
-  "wp_axe_2":{ type:ItemType.TWOHANDED, hackColor:"#FF00FF", stats:{"str_curr":20}, gold:10, img:"gfx/grindquest/axe_1h.png" },
-  "wp_wand_1":{ type:ItemType.MAINHAND, hackColor:"#FF0000", stats:{"int_curr":10}, gold:5, img:"gfx/grindquest/staff_2h.png" },
+  "wp_sword_1":{ type:ItemType.MAINHAND, hackColor:"#FF0000", stats:{"str_curr":10}, gold:5, sprite:"gfx/items/weap_sword.sprite" },
+  "wp_dagger_1":{ type:ItemType.MAINHAND, hackColor:"#FF0000", stats:{"agi_curr":10}, gold:5, sprite:"gfx/items/weap_dagger.sprite" },
+  "wp_axe_1":{ type:ItemType.TWOHANDED, hackColor:"#FF00FF", stats:{"str_curr":20}, gold:10, sprite:"gfx/items/weap_axe.sprite" },
+  "wp_wand_1":{ type:ItemType.MAINHAND, hackColor:"#FF0000", stats:{"int_curr":10}, gold:5, sprite:"gfx/items/weap_staff.sprite" },
 
   "arm_cloth_1":{ type:ItemType.ARMOR, hackColor:"#00FF00", stats:{"int_curr":10}, gold:5, sprite:"gfx/items/arm_cloth.sprite" },
   "arm_leather_1":{ type:ItemType.ARMOR, hackColor:"#00FF00", stats:{"agi_curr":10}, gold:5, sprite:"gfx/items/arm_leather.sprite" },
@@ -56,7 +56,7 @@ var g_items = {
 var g_stores = {
   "default": {
     "items":[
-      "wp_sword_1", "wp_dagger_1", "wp_axe_2", "wp_wand_1", 
+      "wp_sword_1", "wp_dagger_1", "wp_axe_1", "wp_wand_1", 
       "arm_cloth_1", "arm_leather_1", "arm_metal_1", 
       "mat_cloth_1", "mat_leather_1", "mat_metal_1"
     ]

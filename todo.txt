@@ -196,16 +196,20 @@
 7/4/16
 * map
  - show location tiers
+* art
+ - replace temp icons
+ - replace temp armor icons
+ - replace temp weapon icons
 
 WIP
 
 * art
- - replace temp icons
+
 
 TODO LIST
 
 * art
- - weapons and armor icons
+ - weap icons & data
  - skill icons
 
 * classes
@@ -233,5 +237,6 @@ TODO LIST
 
 Bugs:
 
-* 'resting' shows up too soon upon finishing a fight
+* (med) map scrolling is offset incorrectly
+* (low) 'resting' shows up too soon upon finishing a fight
   - user doesnt get to see the enemy reach zero before it shows up
