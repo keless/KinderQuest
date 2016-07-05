@@ -34,7 +34,7 @@ class Animation {
 		var imgsDownloading = 0;
 		for( var state in this.graph ) {
 			imgsDownloading++;
-			console.log("get sprite "+ state);
+			//console.log("get sprite "+ state);
 			
 			(function(stateName){
 				RP.getSprite( baseName + state + extName, function(e){

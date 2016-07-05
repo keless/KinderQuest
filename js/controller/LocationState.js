@@ -69,8 +69,12 @@ class LocationStateView extends BaseStateView {
 		});
 
 		this.inventoryHud = new InventoryHudView(this.playerModel);
-		this.inventoryHud.pos.setVal(screenSize.x - this.inventoryHud.size.x/2, 325);
+		this.inventoryHud.pos.setVal(screenSize.x - this.inventoryHud.size.x/2, 425);
 		this.rootView.addChild(this.inventoryHud);
+
+		this.playerHud = new PlayerHudView(this.playerModel.getEntity());
+		this.playerHud.pos.setVal(screenSize.x - this.playerHud.size.x/2, 652);
+		this.rootView.addChild(this.playerHud);
 
 		this.SetListener("btnBankSlot", this.onBtnBankSlot);
 		this.SetListener("btnEquipSlot", this.onBtnEquipSlot);

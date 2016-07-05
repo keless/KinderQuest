@@ -203,8 +203,12 @@
 * tutorialization
  - if grinding and no skills selected, stop grinding and present 'no skills' alert
 * new characters spawn in tier 1 areas based on race
+* show player level/stats info view in LocationView
+* parallelize sprite loading
 
 WIP
+
+
 
 * art
  - need more location backgrounds
