@@ -28,7 +28,7 @@ class LoadingView extends BaseStateView {
 		this.loadingName = "";
 		this.nextStateName = nextStateName;
 		
-		this._loadNext( 10 );
+		this._loadNext( 5 );
 	}
 	
 	_loadNext( stride ) {
@@ -64,13 +64,13 @@ class LoadingView extends BaseStateView {
 			case "JPG":
 				RP.loadImage(currLoading, function(e){
 					self.resLoaded.push(currLoading);
-					self._loadNext( 0 ); //recursion inside of anonymous function, yay!
+					self._loadNext( 1 ); //recursion inside of anonymous function, yay!
 				});
 			break;
 			case "sprite":
 				RP.loadSprite(currLoading, function(e){
 					self.resLoaded.push(currLoading);
-					self._loadNext( 0 ); //recursion inside of anonymous function, yay!
+					self._loadNext( 1 ); //recursion inside of anonymous function, yay!
 				});
 			break;
 			//case "anim":
@@ -78,7 +78,7 @@ class LoadingView extends BaseStateView {
 			default:
 				RP.loadJson(currLoading, function(e){
 					self.resLoaded.push(currLoading);
-					self._loadNext( 0 ); //recursion inside of anonymous function, yay!
+					self._loadNext( 1 ); //recursion inside of anonymous function, yay!
 				});
 			break;
 		}

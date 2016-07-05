@@ -1,6 +1,0 @@
-browser quest images licenced CC BY-SA:
-https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses
-
-Browser Quest:
-https://en.wikipedia.org/wiki/BrowserQuest
-https://github.com/mozilla/BrowserQuest
