@@ -24,15 +24,16 @@ class LoadingView extends BaseStateView {
 		this.resLoaded = 0;
 		this.resToLoad = resNameArr;
 		this.numToLoadTotal = resNameArr.length;
+		this.resLoaded = [];
 		this.loadingName = "";
 		this.nextStateName = nextStateName;
 		
-		this._loadNext();
+		this._loadNext( 4 );
 	}
 	
-	_loadNext() {
+	_loadNext( stride ) {
 		var RP = Service.Get("rp");
-		if(this.resToLoad.length == 0) {
+		if(this.resLoaded.length == this.numToLoadTotal) {
 			this.loadingName = "completed";
 			EventBus.ui.dispatch({evtName:"loadingComplete"});
 			if (this.nextStateName) {
@@ -41,13 +42,19 @@ class LoadingView extends BaseStateView {
 			}
 			return;
 		}
+		else if( this.resToLoad.length == 0) {
+			return;
+		}
 		
-		this.loadingName = this.resToLoad[0];
+		var currLoading = this.resToLoad[0];
+		this.loadingName = currLoading;
 		this.resToLoad.splice(0,1); //remove from front
 		var self = this;
 		
 		var ext = this.loadingName.substr(this.loadingName.lastIndexOf('.') + 1);
 		
+		console.log("load in stride " + stride + " : " + currLoading);
+
 		switch(ext) {
 			case "png":
 			case "PNG":
@@ -55,30 +62,34 @@ class LoadingView extends BaseStateView {
 			case "BMP":
 			case "jpg":
 			case "JPG":
-				RP.loadImage(this.loadingName, function(e){
-					self._loadNext(); //recursion inside of anonymous function, yay!
+				RP.loadImage(currLoading, function(e){
+					self.resLoaded.push(currLoading);
+					self._loadNext( 0 ); //recursion inside of anonymous function, yay!
 				});
 			break;
 			case "sprite":
-				RP.loadSprite(this.loadingName, function(e){
-					self._loadNext(); //recursion inside of anonymous function, yay!
+				RP.loadSprite(currLoading, function(e){
+					self.resLoaded.push(currLoading);
+					self._loadNext( 0 ); //recursion inside of anonymous function, yay!
 				});
 			break;
 			//case "anim":
 			//case "json":
 			default:
-				RP.loadJson(this.loadingName, function(e){
-					self._loadNext(); //recursion inside of anonymous function, yay!
+				RP.loadJson(currLoading, function(e){
+					self.resLoaded.push(currLoading);
+					self._loadNext( 0 ); //recursion inside of anonymous function, yay!
 				});
 			break;
 		}
-		
-		
 
+		if(stride > 0) {
+			this._loadNext(stride - 1);
+		}
 	}
 	
 	Draw( g, x,y, ct) {
-		var pct = ~~(100 * ((this.numToLoadTotal - this.resToLoad.length) / this.numToLoadTotal));
+		var pct = ~~(100 * ((this.resLoaded.length) / this.numToLoadTotal));
 		g.drawRectEx(g.getWidth()/2,g.getHeight()/2, g.getWidth(), g.getHeight(), "#000000");
 		g.drawText("("+pct+"%) loading: " + this.loadingName, g.getWidth()/2, 50);
 	}
