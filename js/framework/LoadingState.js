@@ -28,7 +28,7 @@ class LoadingView extends BaseStateView {
 		this.loadingName = "";
 		this.nextStateName = nextStateName;
 		
-		this._loadNext( 4 );
+		this._loadNext( 10 );
 	}
 	
 	_loadNext( stride ) {
