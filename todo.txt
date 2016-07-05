@@ -200,31 +200,31 @@
  - replace temp icons
  - replace temp armor icons
  - replace temp weapon icons
+* tutorialization
+ - if grinding and no skills selected, stop grinding and present 'no skills' alert
+* new characters spawn in tier 1 areas based on race
 
 WIP
 
 * art
-
+ - need more location backgrounds
 
 TODO LIST
 
 * art
  - weap icons & data
  - skill icons
+ - more avatar animations (rest, dead, etc)
 
 * classes
  - fill out talent trees
 
-* art
 * quests, dungeons, raiding
  
 * make more skills
    - block next
    - health shield
    - passive: crit rate
-
-* items 
- - weapon and armor temp icons
 
 * battle
  - fight settings: loot quality

@@ -219,15 +219,26 @@ class CharacterCreationStateView extends BaseStateView {
     var name = this.inputName.getTextInputValue();
     var selectedRace = g_races[this.selectedRaceIdx];
     var selectedClass = g_classes[this.selectedClassIdx];
+
+    var locIdx = 0;
+    for(var i=0; i<g_locations.length; i++) {
+      var locJson = g_locations[i];
+      if("raceStart" in locJson) {
+        if( arrayContains(locJson.raceStart, selectedRace)) {
+          locIdx = i;
+          break;
+        }
+      }
+    }
     
-    var newJson = {entity:{name:name, race:selectedRace, class:selectedClass, stats:{ hp_base:30, xp_level:1 }}};
+    var newJson = { locIdx:locIdx, entity:{name:name, race:selectedRace, class:selectedClass, stats:{ hp_base:30, xp_level:1 }}};
     
     var sd = Service.Get("sd");
     sd.save("char"+this.idx, newJson);
 
     PlayerModel.Load("char"+this.idx);
 
-    Service.Get("state").gotoState("location", 0);
+    Service.Get("state").gotoState("location", locIdx);
   }
 
 }
