@@ -34,7 +34,7 @@ class BattleStateView extends BaseStateView {
 		this.rootView.addChild(this.btnMap);
 		this.SetListener("btnMap", this.onBtnMap);
 
-		this.btnRest = CreateSimpleImageButton(null, "gfx/grindquest/icon_rest.png",   EventBus.ui);
+		this.btnRest = new ButtonView("btnRest", "gfx/items/icon_rest.sprite");
 		this.btnRest.pos.setVal(navX - 50, 25);
 		this.rootView.addChild(this.btnRest);
 		this.SetListener("btnRest", this.onBtnRest);

@@ -125,7 +125,7 @@ class ItemView extends NodeView {
     var itemJson = g_items[itemModel.itemId];
     if("sprite" in itemJson) {
       var spr = itemJson.sprite;
-      var frm = itemJson.sprIdx;
+      var frm = itemJson.sprIdx || 0;
       this.setSprite(spr, frm);
     }else if( "img" in itemJson) {
       var img = g_items[itemModel.itemId].img;
