@@ -9,6 +9,7 @@ class BattleStateView extends BaseStateView {
 		this.playerView = null;
 		this.enemyViews = [];
 		this.stratView = null;
+		this.noSkillsView = null;
 		this.ghostView = null;
 		this.abilityInfoView = null;
 		this.mapView = null;
@@ -93,6 +94,9 @@ class BattleStateView extends BaseStateView {
 
 		this.SetListener("abilityViewClicked", this.onAbilityViewClicked);
 		this.SetListener("btnCloseAbilityView", this.onBtnCloseAbilityView);
+
+		this.SetListener("noSkillsAlert", this.onShowNoSkillsAlert);
+		this.SetListener("btnCloseNoSkillsAlert", this.onHideNoSkillsAlert);
 
 		this.refreshXPBarView();
     this.refreshEnemyEntityViews();
@@ -328,10 +332,32 @@ class BattleStateView extends BaseStateView {
 		EventBus.game.dispatch({evtName:"intentGrindMode"});
 	}
 
+	onShowNoSkillsAlert(e) {
+		if(this.noSkillsView == null) {
+			this._hideStratView();
+
+			this.noSkillsView = new NoSkillsAlertView();
+			var screenSize = Graphics.ScreenSize;
+			this.noSkillsView.pos.setVal(screenSize.x/2, screenSize.y/3);
+			this.topView.addChild(this.noSkillsView);
+		}
+	}
+	onHideNoSkillsAlert(e) {
+		this._hideNoSkillsView();
+	}
+	_hideNoSkillsView()
+	{
+		if(this.noSkillsView != null) {
+			this.noSkillsView.removeFromParent(true);
+			this.noSkillsView = null;
+		}
+	}
+
 	onBtnSkills(e) {
 		EventBus.game.dispatch({evtName:"intentIdleMode"});
 
 		this._hideStratView();
+		this._hideNoSkillsView();
 
 		this.skillsView = new SkillsConfigureView(this.pModel.playerModel);
 		this.topView.addChild(this.skillsView);
@@ -360,8 +386,11 @@ class BattleStateView extends BaseStateView {
 			return;
 		}
 
+		this._hideNoSkillsView();
+
 		this.stratView = new StratSelectionView(this.pModel.playerModel);
-		this.stratView.pos.setVal(500, 200);
+		var screenSize = Graphics.ScreenSize;
+		this.stratView.pos.setVal(screenSize.x/2, screenSize.y/3);
 		this.topView.addChild(this.stratView);
 		//this.rootView.addChild(this.stratView);
 
@@ -493,5 +522,31 @@ class StratSelectionView extends NodeView {
 		//TODO: toggle for pull count
 
 		//TODO: checks for loot type
+	}
+}
+
+class NoSkillsAlertView extends NodeView {
+	constructor() {
+		super();
+
+		this.setRect(400,200, "rgba(0,0,0,0.7)");
+
+		var lblTitle = new NodeView();
+    lblTitle.setLabel("No Skills Equipped!", "16px Arial", "#FF0000");
+    lblTitle.pos.setVal(0, -85);
+    this.addChild(lblTitle);
+
+		var lblText = new NodeView();
+    lblText.setLabel("You need to unlock and equip a skill first!", "16px Arial", "#FFFFFF");
+    lblText.pos.setVal(0, 5);
+    this.addChild(lblText);
+
+		var btnSkills = new ButtonView("btnSkills", "gfx/items/icon_book.sprite");
+		btnSkills.pos.setVal(0, 50);
+		this.addChild(btnSkills);
+
+    var btnClose = new ButtonView("btnCloseNoSkillsAlert", "gfx/btn_white_sm.sprite", "X", "18px Arial", "#FF0000");
+    btnClose.pos.setVal(185,-85);
+    this.addChild(btnClose);
 	}
 }

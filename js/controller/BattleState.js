@@ -268,7 +268,14 @@ class BattleStateModel extends BaseStateModel {
 					}
 					
 				}else {
-					this.doSpawnLogic(ct);
+
+					//check if player has skills equipped, if not, dont let them grind
+					if(this.playerModel.entity.getAbilities().length == 0 ) {
+						EventBus.ui.dispatch({evtName:"noSkillsAlert"});
+						this.setMode(BattleState.MODE_IDLE);
+					} else {
+						this.doSpawnLogic(ct);
+					}
 				}
 			}
 			
