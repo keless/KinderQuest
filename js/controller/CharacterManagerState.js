@@ -61,25 +61,32 @@ class CharacterSelectStateView extends BaseStateView {
         this.rootView.addChild(btn);
 
         if(!isNew) {
+          //show level
           var lblLevel = new NodeView();
           lblLevel.setLabel("Lvl " + json.entity.stats.xp_level, "10px Arial", "#000000" );
           lblLevel.pos.setVal(bx - 30, by + 25);
           this.rootView.addChild(lblLevel);
 
+          //show class
+          var lblClass = new NodeView();
+          lblClass.setLabel(json.entity.class, "10px Arial", "#000000" );
+          lblClass.pos.setVal(bx - 20, by + 35);
+          this.rootView.addChild(lblClass);
 
-		var avatar = new NodeView();
-		var avatarAnim = new Animation();
-		var rp = Service.Get("rp");
-		var json = rp.getJson("gfx/avatars/avatar.anim");
-		avatarAnim.LoadFromJson(json);
-		avatarAnim.QuickAttach("gfx/avatars/"+race+"_", ".sprite");
-		avatar.setAnim(avatarAnim);
-		avatar.pos.setVal(bx - 65, by + 20);
-		avatar.scale = 2;
-		avatar.pixelated = true;
-		this.rootView.addChild(avatar);
+          //show avatar
+          var avatar = new NodeView();
+          var avatarAnim = new Animation();
+          var rp = Service.Get("rp");
+          var json = rp.getJson("gfx/avatars/avatar.anim");
+          avatarAnim.LoadFromJson(json);
+          avatarAnim.QuickAttach("gfx/avatars/"+race+"_", ".sprite");
+          avatar.setAnim(avatarAnim);
+          avatar.pos.setVal(bx - 65, by + 20);
+          avatar.scale = 2;
+          avatar.pixelated = true;
+          this.rootView.addChild(avatar);
 
-
+          //show character delete button
           var btnDel = new ButtonView("btnDel", "gfx/btn_white_sm.sprite", "X", "12px Arial", "#FF0000", {idx:idx});
           btnDel.pos.setVal(bx + 45, by + 25);
           this.rootView.addChild(btnDel);

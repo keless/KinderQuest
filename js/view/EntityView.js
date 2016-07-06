@@ -94,16 +94,12 @@ class AbilityView extends NodeView
 		this.progress = 0;
 		
 		this.m_pAbility = abilityModel;
-		//todo: this.m_pAbility.retain()
-		//todo
 		
 		var w = 50;
 		var h = 50;
 		
 		this.setRect(w, h, "#999999");
 		var self = this;
-
-
 
 		var abilityId = this.m_pAbility.getAbilityId();
     var abilityIdx = Object.keys(g_abilityCatalog).indexOf(abilityId);
@@ -116,7 +112,7 @@ class AbilityView extends NodeView
 		w /= 2;
 		h /= 2;
 		icon.fnCustomDraw.push(function(gfx, x,y, ct){
-			/* width
+			/* width cast anim
 			var width = self.progress * (w-2);
 			var color = "rgba(5,5,5,0.5)";
 			if( self.m_pAbility.isOnCooldown() ) {
@@ -127,7 +123,7 @@ class AbilityView extends NodeView
 			gfx.drawRectEx(x - (w/2) + (width/2) + 1, y, width, h-2, color);
 			*/
 
-			//height
+			//height cast anim
 			var height = self.progress * (h-2);
 			var color = "rgba(5,5,5,0.5)";
 			if( self.m_pAbility.isOnCooldown() ) {

@@ -56,8 +56,8 @@ var g_classTrees = {
 						"abilities":["wand1", "fireball1", "conflagrate1", "searbeam1", "p_dmgAura1"], 
 						"pos":[[0,0], [1,0], [1,1], [1,2], [2,2]]},
 	"paladin":{"name":"Paladin",
-						"abilities":["heal1", "hot1", "p_heal1"],
-						"pos":[[0,0], [0,1], [1,2]]},
+						"abilities":["lightHeal1", "fatedBlock1", "righteousFire1", "p_heal1"],
+						"pos":[[0,0], [0,1], [1,0], [1,2]]},
 	"priest":{"name":"Priest",
 						"abilities":["heal1", "hot1", "lifesteal1", "p_heal1"], 
 						"pos":[[0,0], [0,1], [1,0], [2,2]]},
@@ -385,7 +385,15 @@ var g_abilityCatalog =  {
 				"passiveEffects":[
 						{
 								"effectType": "barter",
-								"valueMultiplier": 0.1,
+								"valueMultiplier": 0.1
+						}
+				] },
+				{"name":"Barter",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "barter",
+								"valueMultiplier": 0.2
 						}
 				]},
 				{"name":"Barter",
@@ -393,7 +401,7 @@ var g_abilityCatalog =  {
 				"passiveEffects":[
 						{
 								"effectType": "barter",
-								"valueMultiplier": 0.2,
+								"valueMultiplier": 0.3
 						}
 				]},
 				{"name":"Barter",
@@ -401,7 +409,7 @@ var g_abilityCatalog =  {
 				"passiveEffects":[
 						{
 								"effectType": "barter",
-								"valueMultiplier": 0.3,
+								"valueMultiplier": 0.4
 						}
 				]},
 				{"name":"Barter",
@@ -409,15 +417,7 @@ var g_abilityCatalog =  {
 				"passiveEffects":[
 						{
 								"effectType": "barter",
-								"valueMultiplier": 0.4,
-						}
-				]},
-				{"name":"Barter",
-				"target":"self",
-				"passiveEffects":[
-						{
-								"effectType": "barter",
-								"valueMultiplier": 0.5,
+								"valueMultiplier": 0.5
 						}
 				]}
 			]
@@ -432,7 +432,7 @@ var g_abilityCatalog =  {
 				"passiveEffects":[
 						{
 								"effectType": "goldFind",
-								"valueMultiplier": 0.1,
+								"valueMultiplier": 0.1
 						}
 				]},
 				{"name":"Gold Find",
@@ -440,31 +440,148 @@ var g_abilityCatalog =  {
 				"passiveEffects":[
 						{
 								"effectType": "goldFind",
+								"valueMultiplier": 0.2
+						}
+				]},
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.3
+						}
+				]},
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.4
+						}
+				]},
+				{"name":"Gold Find",
+				"target":"self",
+				"passiveEffects":[
+						{
+								"effectType": "goldFind",
+								"valueMultiplier": 0.5
+						}
+				]}
+			]
+		},
+		"fatedBlock1": {
+			"reqs": {
+				"xp_level": 1
+			},
+			"ranks": [
+				{ "name": "Fated Block",
+					"castTime": 0,
+					"cooldownTime": 7,
+					"range": 500,
+					"target": "self",
+					"effectsOnCast": [
+						{
+							"effectType": "block",
+							"damageType": "all",
+							"targetStat": "hp_curr",
+							"valueBase": 0,
+							"valueStat": "str_curr",
+							"valueMultiplier": 0.1,
+							"effectLifetime": 5,
+							"tickFreq": 1
+						}
+				]}
+			]
+		},
+		"righteousFire1": {
+			"reqs": {
+				"xp_level": 1
+			},
+			"ranks": [
+				{
+					"name": "Righteous Fire",
+					"castTime": 0,
+					"cooldownTime": 7,
+					"range": 500,
+					"target": "self",
+					"effectsOnCast": [
+						{
+							"effectType": "damage",
+							"damageType": "holy",
+							"targetStat": "hp_curr",
+							"valueBase": 10,
+							"valueStat": "int_curr",
+							"valueMultiplier": 0.1
+						}
+					]
+				}
+			]
+		},
+		"lightHeal1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Light Heal",
+				"castTime": 1.0,
+				"cooldownTime":5.0,
+				"range":500,
+				"target":"self",
+				"effectsOnCast":[
+						{
+								"effectType": "heal",
+								"damageType": "magic",
+								"targetStat": "hp_curr",
+								"valueBase": 5,
+								"valueStat": "int_curr",
+								"valueMultiplier": 0.02,
+								"react": "glow"
+						}
+				]}
+			]
+		},
+		"mediumHeal1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Medium Heal",
+				"castTime": 3.0,
+				"cooldownTime":5.0,
+				"range":500,
+				"target":"self",
+				"effectsOnCast":[
+						{
+								"effectType": "heal",
+								"damageType": "magic",
+								"targetStat": "hp_curr",
+								"valueBase": 0,
+								"valueStat": "int_curr",
 								"valueMultiplier": 0.2,
+								"react": "glow"
 						}
-				]},
-				{"name":"Gold Find",
+				]}
+			]
+		},
+		"largeHeal1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Medium Heal",
+				"castTime": 3.0,
+				"cooldownTime":5.0,
+				"range":500,
 				"target":"self",
-				"passiveEffects":[
+				"effectsOnCast":[
 						{
-								"effectType": "goldFind",
-								"valueMultiplier": 0.3,
-						}
-				]},
-				{"name":"Gold Find",
-				"target":"self",
-				"passiveEffects":[
-						{
-								"effectType": "goldFind",
-								"valueMultiplier": 0.4,
-						}
-				]},
-				{"name":"Gold Find",
-				"target":"self",
-				"passiveEffects":[
-						{
-								"effectType": "goldFind",
-								"valueMultiplier": 0.5,
+								"effectType": "heal",
+								"damageType": "magic",
+								"targetStat": "hp_curr",
+								"valueBase": 0,
+								"valueStat": "int_curr",
+								"valueMultiplier": 0.2,
+								"react": "glow"
 						}
 				]}
 			]
