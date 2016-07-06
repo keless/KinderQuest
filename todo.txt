@@ -206,8 +206,14 @@
 * show player level/stats info view in LocationView
 * parallelize sprite loading
 
+7/5/16
+* show class name on char select screen
+* art
+ - more ability icons
+
 WIP
 
+* paladin & warrior skills
 
 
 * art
