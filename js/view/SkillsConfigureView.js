@@ -34,7 +34,7 @@ class SkillsConfigureView extends NodeView {
     this.eatClicks();
 
 		var lblText = new NodeView();
-		lblText.setRect(500, 40, "rgba(1,1,1,0.4)")
+		lblText.setRect(500, 40, "rgba(0,0,0,0.4)")
 		lblText.setLabel("Spells & Abilities", "20px Arial", "#FFFFFF");
 		lblText.pos.setVal(screenSize.x/2, 50);
 		this.addChild(lblText);
@@ -70,7 +70,7 @@ class SkillsConfigureView extends NodeView {
     }
 
     this.treeView = new NodeView();
-    this.treeView.setRect(800, 400);
+    this.treeView.setRect(800, 400, "rgba(20,20,20,0.5)");
     this.treeView.pos.setVal(screenSize.x/2, screenSize.y/2);
     this.addChild(this.treeView);
 

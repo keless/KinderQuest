@@ -56,8 +56,17 @@ var g_classTrees = {
 						"abilities":["wand1", "fireball1", "conflagrate1", "searbeam1", "p_dmgAura1"], 
 						"pos":[[0,0], [1,0], [1,1], [1,2], [2,2]]},
 	"paladin":{"name":"Paladin",
-						"abilities":["lightHeal1", "fatedBlock1", "righteousFire1", "p_heal1"],
-						"pos":[[0,0], [0,1], [1,0], [1,2]]},
+						"abilities":[
+							"attack1", "lightHeal1", 
+							"attack2", "fatedBlock1", 
+							"retribution1",
+							"righteousFire1", "p_heal1"],
+						"pos":[[0,0], [0,2], 
+									[1,0], [1,1],
+									[2,0],
+									[5,0],
+									[5,2]
+									]},
 	"priest":{"name":"Priest",
 						"abilities":["heal1", "hot1", "lifesteal1", "p_heal1"], 
 						"pos":[[0,0], [0,1], [1,0], [2,2]]},
@@ -69,7 +78,8 @@ var g_classTrees = {
 						"pos":[[0,0], [1,0]]}
 }
 
-var g_abilityCatalog =  {
+var g_abilityCatalog =  
+{
 		"attack1":{
 			"reqs": {
 				"xp_level":1
@@ -583,6 +593,103 @@ var g_abilityCatalog =  {
 								"valueMultiplier": 0.2,
 								"react": "glow"
 						}
+				]}
+			]
+		},
+		"determination1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Determination",
+				"castTime": 0.0,
+				"cooldownTime":5.0,
+				"range":500,
+				"target":"self",
+				"effectsOnCast":[
+						{
+								"effectType": "heal",
+								"damageType": "magic",
+								"targetStat": "hp_curr",
+								"valueBase": 0,
+								"valueStat": "str_curr",
+								"valueMultiplier": 0.01,
+								"react": "glow"
+						}
+				]}
+			]
+		},
+		"holyAvatar1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Holy Avatar",
+				"castTime": 0.0,
+				"cooldownTime":5.0,
+				"range":500,
+				"target":"self",
+				"effectsOnCast":[
+						{
+								"effectType": "buff",
+								"damageType": "magic",
+								"targetStat": "str_curr",
+								"valueBase": 0,
+								"valueStat": "str_base",
+								"valueMultiplier": 0.02,
+								"react": "glow"
+						},
+						{
+								"effectType": "buff",
+								"damageType": "magic",
+								"targetStat": "int_curr",
+								"valueBase": 0,
+								"valueStat": "int_base",
+								"valueMultiplier": 0.02,
+								"react": "glow"
+						},
+						{
+								"effectType": "buff",
+								"damageType": "magic",
+								"targetStat": "hp_curr",
+								"valueBase": 0,
+								"valueStat": "hp_base",
+								"valueMultiplier": 0.01,
+								"react": "glow"
+						}
+				]}
+			]
+		},
+		"p_masochism":{
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Masochism",
+				"target":"self",
+				"passiveEffects":[
+					{
+						"effectType":"masochism",
+						"damageType":"all",
+						"valueMultiplier":0.05
+					}
+				]}
+			]
+		},
+		"retribution1":{
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Retribution",
+				"target":"self",
+				"cooldownTime":5.0,
+				"passiveEffects":[
+					{
+						"effectType":"dmgReflect",
+						"damageType":"all",
+						"valueMultiplier":0.20
+					}
 				]}
 			]
 		}

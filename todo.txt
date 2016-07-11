@@ -215,6 +215,7 @@ WIP
 
 * paladin & warrior skills
 
+* make ability json specify sprite idx for icon
 
 * art
  - need more location backgrounds
