@@ -59,13 +59,14 @@ var g_classTrees = {
 						"abilities":[
 							"attack1", "lightHeal1", 
 							"attack2", "fatedBlock1", 
-							"retribution1",
+							"retribution1","p_sacredChant",
+							"holyShield1",
 							"righteousFire1", "p_heal1"],
 						"pos":[[0,0], [0,2], 
 									[1,0], [1,1],
-									[2,0],
-									[5,0],
-									[5,2]
+									[2,0], [2,2],
+									[3,1],
+									[5,0], [5,2]
 									]},
 	"priest":{"name":"Priest",
 						"abilities":["heal1", "hot1", "lifesteal1", "p_heal1"], 
@@ -690,6 +691,43 @@ var g_abilityCatalog =
 						"damageType":"all",
 						"valueMultiplier":0.20
 					}
+				]}
+			]
+		},
+		"p_sacredChant":{
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Sacred Chant",
+				"target":"self",
+				"cooldownTime":5.0,
+				"passiveEffects":[
+					{
+						"effectType":"restRedux",
+						"valueBase": 5
+					}
+				]}
+			]
+		},
+		"holyShield1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Holy Shield",
+				"castTime": 0.0,
+				"cooldownTime":5.0,
+				"range":500,
+				"target":"self",
+				"effectsOnCast":[
+						{
+								"effectType": "invulnerable",
+								"damageType": "all",
+								"targetStat": "str_curr",
+								"effectLifetime": 4,
+								"react":"holyBubble"
+						}
 				]}
 			]
 		}

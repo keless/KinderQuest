@@ -145,7 +145,7 @@ class SkillsConfigureView extends NodeView {
     var startX = -400 + 80;
     var startY = -200 + 60;
 
-    var colW = 160;
+    var colW = 80;
     var rowH = 80;
 
     //check prereqs
