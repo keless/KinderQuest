@@ -61,12 +61,16 @@ var g_classTrees = {
 							"attack2", "fatedBlock1", 
 							"retribution1","p_sacredChant",
 							"holyShield1",
-							"righteousFire1", "p_heal1"],
+							"judgement1", "consecration1",
+							"righteousFire1", "p_dmgRdx1",
+							"p_heal1"],
 						"pos":[[0,0], [0,2], 
 									[1,0], [1,1],
 									[2,0], [2,2],
 									[3,1],
-									[5,0], [5,2]
+									[4,0], [4,2],
+									[5,0], [5,1], 
+									[6,2]
 									]},
 	"priest":{"name":"Priest",
 						"abilities":["heal1", "hot1", "lifesteal1", "p_heal1"], 
@@ -335,7 +339,7 @@ var g_abilityCatalog =
 				"xp_level":1
 			},
 			"ranks":[
-				{"name":"Toughness",
+				{"name":"Resolve",
 				"target":"self",
 				"passiveEffects":[
 					{
@@ -730,5 +734,49 @@ var g_abilityCatalog =
 						}
 				]}
 			]
-		}
+		},
+		"judgement1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Judgement",
+				"castTime": 0.0,
+				"cooldownTime":5.0,
+				"range":500,
+				"target":"self",
+				"effectsOnCast":[
+						{
+							"effectType": "damage",
+							"damageType": "holy",
+							"targetStat": "hp_curr",
+							"valueBase": 10,
+							"valueStat": "int_curr",
+							"valueMultiplier": 0.1
+						}
+				]}
+			]
+		},
+		"consecration1": {
+			"reqs":{
+				"xp_level":1
+			},
+			"ranks":[
+				{"name":"Consecration",
+				"castTime": 0.0,
+				"cooldownTime":5.0,
+				"range":500,
+				"target":"self",
+				"effectsOnCast":[
+						{
+							"effectType": "damage",
+							"damageType": "holy",
+							"targetStat": "hp_curr",
+							"valueBase": 10,
+							"valueStat": "int_curr",
+							"valueMultiplier": 0.1
+						}
+				]}
+			]
+		},
 }
