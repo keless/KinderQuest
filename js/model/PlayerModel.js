@@ -152,6 +152,10 @@ class PlayerModel {
     return this.entity;
   }
 
+  getGoldFindModifier() {
+    return this.entity.getPassiveGoldFindModifier();
+  }
+
   getBarterModifier() {
     return this.entity.getPassiveBarterModifier();
   }
