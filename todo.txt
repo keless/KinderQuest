@@ -211,10 +211,15 @@
 * art
  - more ability icons
 
+7/11/16
+* art 
+ - more ability icons
+
 WIP
 
 * paladin & warrior skills
 
+* make ability json specify sprite idx for icon
 
 * art
  - need more location backgrounds
